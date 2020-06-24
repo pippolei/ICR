@@ -18,7 +18,7 @@ from lib import *
 pd.set_option('display.max_columns', None)
 pd.options.mode.chained_assignment = None 
 
-file_dir = "C:/perforce/bp/Variant_Administration/Files/Suite_NW_760/sSuite_100/Central/Model_S"
+
 
 sys.path.append(file_dir)
 os.chdir(file_dir)
@@ -47,6 +47,7 @@ rc_dgt2 = readfile("ICAC_ICA_RECON_DGT_4WE.TXT")
 frame = [rc_dgt, rc_dgt2]
 newrc_dgt = pd.concat(frame, axis = 0, sort = False) #�кϲ�, ��Ϊ0
 newrc_dgt = newrc_dgt[["I_DISP_GROUP","I_RECON_CASE_ID","I_DESCL_EN"]]
+newrc_dgt["I_DESCL_EN"] = newrc_dgt["I_DESCL_EN"].apply(lambda x: x.replace("-", ""))
 newrc_dg = pd.merge(newrc_dg, newrc_dgt, on = ['I_RECON_CASE_ID','I_DISP_GROUP'])
 
 rc_filt = readfile("ICAC_ICA_RECON_FLTR_46S.TXT")
@@ -78,5 +79,5 @@ newdata = pd.merge(newdata, newrc_tol, on = ['I_RECON_CASE_ID',"I_DISP_GROUP"])
 newdata.rename(columns = dicts, inplace = True)
 newrc_filter.drop(['I_SIGN'], axis = 1, inplace = True)
 newrc_filter.rename(columns = dicts, inplace = True)
-newdata.to_csv("C:/dev/40Y/ReconCase.csv",sep = ",", index = False, header= True)
-newrc_filter.to_csv("C:/dev/40Y/ReconCase_filter.csv",sep = ",", index = False, header= True)
+newdata.to_csv(write_dir + "ReconCase.csv",sep = ",", index = False, header= True)
+newrc_filter.to_csv(write_dir + "ReconCase_Filter.csv",sep = ",", index = False, header= True)

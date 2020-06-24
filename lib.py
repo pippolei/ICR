@@ -17,6 +17,10 @@ from pip._vendor.pyparsing import Regex
 pd.set_option('display.max_columns', None)
 pd.options.mode.chained_assignment = None 
 
+file_dir = "C:/perforce/bp/Variant_Administration/Files/Suite_NW_760/sSuite_100/Central/Model_S"
+write_dir = "C:/dev/40Y/"
+
+
 
 dicts = {
     'I_RCODE':'Reason Code', 
@@ -61,6 +65,9 @@ dicts = {
     'I_LUNIT_C_FIELD':'Leading Unit Superordinate Field',
     'I_LUNIT_ENTITY_CDS':'Unit Entity CDS View',
     'I_LUNIT_FIELD':'Leading Unit Field',
+    'I_LUNIT_ENTITY_CDS':'Unit Entity CDS View',
+    'I_PUNIT_C_FIELD':'Partner Unit Superordinate Field',
+    "I_PUNIT_FIELD": "Partner Unit Field",
     'I_CONV_PROFILE_ID':'Profile ID',
     'I_CONV_TYPE':'Conversion Type',
     'I_DERIVE_TCURR':'Use Derived Target Currency',

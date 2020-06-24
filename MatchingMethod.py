@@ -19,7 +19,6 @@ from lib import *
 pd.set_option('display.max_columns', None)
 pd.options.mode.chained_assignment = None 
 
-file_dir = "C:/perforce/bp/Variant_Administration/Files/Suite_NW_760/sSuite_100/Central/Model_S"
 
 sys.path.append(file_dir)
 os.chdir(file_dir)
@@ -80,11 +79,13 @@ ruledata.drop(["I_POSIT_NO","I_SIGN","I_PREV_RULE_ID"], axis = 1, inplace = True
 
 newdata.drop(["I_FILTER_ID", "I_RULE_ID", "I_POSIT_NO", "I_SIGN"], axis = 1, inplace = True)
 newdata.rename(columns = dicts, inplace = True)
-newdata.to_csv("C:/dev/40Y/method_header.csv",sep = ",", index = False, header= True)
+newdata.to_csv(write_dir + "MatchingMethod_Header.csv",sep = ",", index = False, header= True)
 ruledata.drop(["I_FILTER_ID", "I_DS_NAME"], axis = 1, inplace = True)
 ruledata = ruledata.sort_values(["I_METHOD_ID","I_RULE_ID"])
 ruledata.rename(columns = dicts, inplace = True)
-ruledata.to_csv("C:/dev/40Y/method_rule_filter.csv",sep = ",", index = False, header= True)
+ruledata.to_csv(write_dir + "MatchingMethod_Rule_Filter.csv",sep = ",", index = False, header= True)
+method_expr = pd.merge(method_expr, method_rulet, on = ['I_METHOD_ID', 'I_RULE_ID'])
 method_expr = method_expr.sort_values(["I_METHOD_ID","I_RULE_ID","I_EXPR_ID"])
 method_expr.rename(columns = dicts, inplace = True)
-method_expr.to_csv("C:/dev/40Y/method_rule_expr.csv",sep = ",", index = False, header= True)
+method_expr.to_csv(write_dir + "MatchingMethod_Rule_Expression.csv",sep = ",", index = False, header= True)
+

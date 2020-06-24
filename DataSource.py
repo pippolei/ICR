@@ -13,11 +13,12 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from lib import *
+import xlsxwriter
 
 pd.set_option('display.max_columns', None)
 pd.options.mode.chained_assignment = None 
 
-file_dir = "C:/perforce/bp/Variant_Administration/Files/Suite_NW_760/sSuite_100/Central/Model_S"
+
 
 sys.path.append(file_dir)
 os.chdir(file_dir)
@@ -28,7 +29,7 @@ ds = readfile("VC_ICA_DS_V_ICA_DS_T_46S.TXT")
 ds2 = readfile("VC_ICA_DS_V_ICA_DS_T_4WE.TXT")
 frame = [ds, ds2]
 newds = pd.concat(frame, axis = 0, sort = False) #�кϲ�, ��Ϊ0
-newds = newds[["I_DS_NAME", "I_CDS_NAME","I_DESCL_EN", "I_LUNIT_AO", "I_LUNIT_C_FIELD", "I_LUNIT_ENTITY_CDS", "I_LUNIT_FIELD"]]
+newds = newds[["I_DS_NAME", "I_CDS_NAME","I_DESCL_EN", "I_LUNIT_AO", "I_LUNIT_C_FIELD", "I_LUNIT_ENTITY_CDS", "I_LUNIT_FIELD", "I_PUNIT_C_FIELD", "I_PUNIT_FIELD"]]
 
 ds_filter = readfile("VC_ICA_DS_V_ICA_DS_MFF_46S.TXT")
 ds_filter2 = readfile("VC_ICA_DS_V_ICA_DS_MFF_4WE.TXT")
@@ -69,9 +70,11 @@ newdata_conversion = pd.merge(newds, new_ds_conv, on = ['I_DS_NAME'])
 newdata_filter.rename(columns = dicts, inplace = True)
 newdata_nav.rename(columns = dicts, inplace = True)
 newdata_conversion.rename(columns = dicts, inplace = True)
+new_ds_field = new_ds_field.sort_values(["I_DS_NAME","I_FIELD_NAME"])
 new_ds_field.rename(columns = dicts, inplace = True)
 
-newdata_filter.to_csv("C:/dev/40Y/ds_filter.csv",sep = ",", index = False, header= True)
-newdata_nav.to_csv("C:/dev/40Y/ds_naviation.csv",sep = ",", index = False, header= True)
-newdata_conversion.to_csv("C:/dev/40Y/ds_conversion.csv",sep = ",", index = False, header= True)
-new_ds_field.to_csv("C:/dev/40Y/ds_field.csv",sep = ",", index = False, header= True)
+newdata_filter.to_csv(write_dir + "DataSource_FilterFields.csv",sep = ",", index = False, header= True)
+newdata_nav.to_csv(write_dir + "DataSource_NavigationSetting.csv",sep = ",", index = False, header= True)
+newdata_conversion.to_csv(write_dir + "DataSource_ConversionProfile.csv",sep = ",", index = False, header= True)
+new_ds_field.to_csv(write_dir + "DataSource_FieldSemantics.csv",sep = ",", index = False, header= True)
+

@@ -4,4 +4,5 @@ encoding/MatchingMethod.py=utf-8
 encoding/PostingRule.py=utf-8
 encoding/ReasonCode.py=utf-8
 encoding/ReconCase.py=utf-8
+encoding/WriteXlsx.py=utf-8
 encoding/lib.py=utf-8

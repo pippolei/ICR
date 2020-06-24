@@ -18,7 +18,7 @@ from lib import *
 pd.set_option('display.max_columns', None)
 pd.options.mode.chained_assignment = None 
 
-file_dir = "C:/perforce/bp/Variant_Administration/Files/Suite_NW_760/sSuite_100/Central/Model_S"
+
 
 sys.path.append(file_dir)
 os.chdir(file_dir)
@@ -76,6 +76,6 @@ newdata = newdata.replace(np.NaN, "", regex = True)
 newdata.rename(columns = dicts, inplace = True)
 
 newdc_ig.rename(columns = dicts, inplace = True)
-newdata.to_csv("C:/dev/40Y/rule_header.csv",sep = ",", index = False, header= True)
-newdc_ig.to_csv("C:/dev/40Y/rule_item.csv",sep = ",", index = False, header= True)
+newdata.to_csv(write_dir + "PostingRule_header.csv",sep = ",", index = False, header= True)
+newdc_ig.to_csv(write_dir + "PostingRule_item.csv",sep = ",", index = False, header= True)
 
