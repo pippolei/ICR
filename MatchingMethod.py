@@ -78,6 +78,7 @@ ruledata = pd.merge(ruledata, method_fltr, on = ['I_METHOD_ID','I_RULE_ID'])
 ruledata.drop(["I_POSIT_NO","I_SIGN","I_PREV_RULE_ID"], axis = 1, inplace = True)
 
 newdata.drop(["I_FILTER_ID", "I_RULE_ID", "I_POSIT_NO", "I_SIGN"], axis = 1, inplace = True)
+newdata = newdata[['I_METHOD_ID', 'I_DESCL_EN', 'I_DS_NAME', 'I_FLDNM', 'I_SELOPT', 'I_LOW', 'I_HIGH']]
 newdata.rename(columns = dicts, inplace = True)
 newdata.to_csv(write_dir + "MatchingMethod_Header.csv",sep = ",", index = False, header= True)
 ruledata.drop(["I_FILTER_ID", "I_DS_NAME"], axis = 1, inplace = True)

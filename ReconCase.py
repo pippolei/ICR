@@ -49,6 +49,7 @@ newrc_dgt = pd.concat(frame, axis = 0, sort = False) #�кϲ�, ��Ϊ0
 newrc_dgt = newrc_dgt[["I_DISP_GROUP","I_RECON_CASE_ID","I_DESCL_EN"]]
 newrc_dgt["I_DESCL_EN"] = newrc_dgt["I_DESCL_EN"].apply(lambda x: x.replace("-", ""))
 newrc_dg = pd.merge(newrc_dg, newrc_dgt, on = ['I_RECON_CASE_ID','I_DISP_GROUP'])
+newrc_dg["I_PAIRED_DISP_GROUP"] = newrc_dg["I_PAIRED_DISP_GROUP"].replace("#0000","")
 
 rc_filt = readfile("ICAC_ICA_RECON_FLTR_46S.TXT")
 rc_filt2 = readfile("ICAC_ICA_RECON_FLTR_4WE.TXT")
@@ -60,8 +61,8 @@ rc_tol = readfile("ICAC_ICA_RECON_TOL_46S.TXT")
 rc_tol2 = readfile("ICAC_ICA_RECON_TOL_4WE.TXT")
 frame = [rc_tol, rc_tol2]
 newrc_tol = pd.concat(frame, axis = 0, sort = False) #�кϲ�, ��Ϊ0
-newrc_tol = newrc_tol[["I_AMNT_FIELD","I_DISP_GROUP","I_RECON_CASE_ID","I_CURR_FIELD","I_LEADING_AMNT","I_SAME_SIGN","I_TOLERANCE_A","I_TOLERANCE_P"]]
-
+#newrc_tol = newrc_tol[["I_AMNT_FIELD","I_DISP_GROUP","I_RECON_CASE_ID","I_CURR_FIELD","I_LEADING_AMNT","I_SAME_SIGN","I_TOLERANCE_A","I_TOLERANCE_P"]]
+newrc_tol = newrc_tol[["I_AMNT_FIELD","I_DISP_GROUP","I_RECON_CASE_ID","I_CURR_FIELD","I_LEADING_AMNT","I_TOLERANCE_A","I_TOLERANCE_P"]]
 
 rc_tolv = readfile("ICAC_ICA_RECON_TOLV_46S.TXT")
 rc_tolv2 = readfile("ICAC_ICA_RECON_TOLV_4WE.TXT")
@@ -77,7 +78,8 @@ newdata = pd.merge(newrc, newrc_dg, on = ['I_RECON_CASE_ID'])
 newdata = pd.merge(newdata, newrc_tol, on = ['I_RECON_CASE_ID',"I_DISP_GROUP"])
 
 newdata.rename(columns = dicts, inplace = True)
-newrc_filter.drop(['I_SIGN'], axis = 1, inplace = True)
+
+newrc_filter = newrc_filter[['I_RECON_CASE_ID', 'I_FILTER_ID', 'I_FLDNM', 'I_SELOPT' , 'I_LOW', 'I_HIGH']]
 newrc_filter.rename(columns = dicts, inplace = True)
 newdata.to_csv(write_dir + "ReconCase.csv",sep = ",", index = False, header= True)
-newrc_filter.to_csv(write_dir + "ReconCase_Filter.csv",sep = ",", index = False, header= True)
+newrc_filter.to_csv(write_dir + "ReconCase_DisplayGroup_Filter.csv",sep = ",", index = False, header= True)

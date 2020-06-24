@@ -61,6 +61,7 @@ dc_ig = readfile("ICAD_ICA_DC_IG_46S.TXT")
 dc_ig2 = readfile("ICAD_ICA_DC_IG_4WE.TXT")
 frame = [dc_ig, dc_ig2]
 newdc_ig = pd.concat(frame, axis = 0, sort = False) #�кϲ�, ��Ϊ
+newdc_ig.drop(["I_LOOP_OPTION"], axis = 1, inplace = True)
 
 dc_igf = readfile("ICAD_ICA_DC_IG_FLD_46S.TXT")
 dc_igf2 = readfile("ICAD_ICA_DC_IG_FLD_4WE.TXT")

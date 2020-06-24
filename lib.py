@@ -92,7 +92,7 @@ dicts = {
     'I_FLD_FUNC':'Field Function',
     'I_PARAM_VALUE':'Parameter Value',
     'I_RECON_CASE_ID':'ReconCase ID',
-    'I_SAME_FYV':'Same Fiscal Year Variant',
+    'I_SAME_FYV':'With Balance Carryforward',
     'I_DESCL_EN_x':'Description',
     'I_DESCL_EN_y':'Description',
     'I_DESCL_EN_x':'Description',

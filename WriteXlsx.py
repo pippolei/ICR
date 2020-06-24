@@ -14,10 +14,10 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from lib import *
+import xlsxwriter
 
 
-
-xlsx_writer = pd.ExcelWriter('C:/Users/i038196/Desktop/ICR_Configuratoin.xlsx', engine='xlsxwriter')
+xlsx_writer = pd.ExcelWriter('C:/Users/i038196/Desktop/ICR_Configuration.xlsx', engine='xlsxwriter')
 
 for root, dirs, files in os.walk(write_dir):  
     for file in files:
