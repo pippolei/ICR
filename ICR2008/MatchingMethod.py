@@ -13,7 +13,7 @@ from sklearn.svm import SVC
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
-from lib import *
+from ICR2008.lib import *
 
 
 pd.set_option('display.max_columns', None)

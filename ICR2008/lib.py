@@ -17,8 +17,9 @@ from pip._vendor.pyparsing import Regex
 pd.set_option('display.max_columns', None)
 pd.options.mode.chained_assignment = None 
 
-file_dir = "C:/perforce/bp/Variant_Administration/Files/Suite_NW_760/sSuite_100/Central/Model_S"
-write_dir = "C:/dev/40Y/"
+#file_dir = "C:/perforce/bp/Variant_Administration/Files/Suite_NW_760/sSuite_100/Central/Model_S"
+file_dir = "C:/perforce/bp/Variant_Administration/S4HANA_CLD_Maintenance/2005_CLD_2020_Q2/Central/Model_S"
+write_dir = "C:/dev/40Y/2005"
 
 
 
