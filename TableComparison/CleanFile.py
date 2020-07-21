@@ -14,22 +14,25 @@ from TableComparison.lib import *
 
 
 
-def cleanfile(folder, filename):
+def cleanfile(folder, filename, src_trg):
     df = pd.read_excel(folder + filename)
-    df.drop("MANDT", axis = 1, inplace = True)  #È¥µôclient
+    if(df.columns.contains("MANDT")):
+        df.drop("MANDT", axis = 1, inplace = True)  #È¥µôclient
+    if(df.columns.contains("RCLNT")):
+        df.drop("RCLNT", axis = 1, inplace = True)  #È¥µôclient
     if(df.columns.contains("LANGU")):
         df = df[df["LANGU"] == 'E']
     df = df.sort_values(df.columns.to_list())
-    df.to_csv(target + filename[0:-4] + "_src1.csv", sep = ',', index = False)
+    df.to_csv(target + filename[0:-5] + "_" + src_trg + ".csv", sep = ',', index = False)
     
 for root, dirs, files in os.walk(filedir):
     index = 0
     for file in files:
-        cleanfile(filedir, file)
+        cleanfile(filedir, file, "src")
 
 for root, dirs, files in os.walk(filedir2):
     index = 0
     for file in files:
-        cleanfile(filedir2, file)
+        cleanfile(filedir2, file, "trg")
         
 

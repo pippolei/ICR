@@ -17,8 +17,8 @@ filelist = pd.read_csv(rootdir + "fincs_ecatt.TXT", sep = '\t',encoding='utf-16'
 
 
 for i in range(filelist.shape[0]):
-    file1 = target + filelist["ZTABLE"][i] + "_src1.csv"
-    file2 = target + filelist["ZTABLE"][i] + "_src2.csv"
+    file1 = target + filelist["ZTABLE"][i] + "_src.csv"
+    file2 = target + filelist["ZTABLE"][i] + "_trg.csv"
     if (os.path.isfile(file1) and os.path.isfile(file2)):
         df1 = pd.read_csv(file1, header = None)
         df2 = pd.read_csv(file2, header = None)
@@ -26,5 +26,5 @@ for i in range(filelist.shape[0]):
     else:
         filelist["ZFILE"][i] = 'EmptyTable'
     
-filelist.to_csv(target + "result.csv", sep = ',', index = False)  
+filelist.to_csv(rootdir + "result.csv", sep = ',', index = False)  
 
