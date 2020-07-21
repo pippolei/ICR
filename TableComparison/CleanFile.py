@@ -8,14 +8,13 @@ import matplotlib.pyplot as plt
 import sys
 import datetime
 import gc
-import string as str
 from TableComparison.lib import *
 
 
 
 
 def cleanfile(folder, filename, src_trg):
-    df = pd.read_excel(folder + filename)
+    df = pd.read_excel(folder + filename, dtype=str)
     if(df.columns.contains("MANDT")):
         df.drop("MANDT", axis = 1, inplace = True)  #È¥µôclient
     if(df.columns.contains("RCLNT")):
