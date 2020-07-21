@@ -17,6 +17,7 @@ from pip._vendor.pyparsing import Regex
 pd.set_option('display.max_columns', None)
 pd.options.mode.chained_assignment = None 
 
+
 rootdir = "C:/Users/i038196/Desktop/version2/"
 filedir = rootdir + "HC6.715/"
 filedir2 = rootdir + "HXF.803/"
