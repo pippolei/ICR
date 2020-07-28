@@ -19,6 +19,6 @@ pd.options.mode.chained_assignment = None
 
 
 rootdir = "C:/Users/i038196/Desktop/version2/"
-filedir = rootdir + "HC6.715/"
-filedir2 = rootdir + "HXF.803/"
+filedir = rootdir + "J02_HC6.715/"
+filedir2 = rootdir + "J02_HXF.803/"
 target = rootdir + "target/"

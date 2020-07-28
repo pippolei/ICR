@@ -21,6 +21,8 @@ def cleanfile(folder, filename, src_trg):
         df.drop("RCLNT", axis = 1, inplace = True)  #È¥µôclient
     if(df.columns.contains("LANGU")):
         df = df[df["LANGU"] == 'E']
+    if(df.columns.contains("SPARS")):
+        df = df[df["SPARS"] == 'E']
     df = df.sort_values(df.columns.to_list())
     df.to_csv(target + filename[0:-5] + "_" + src_trg + ".csv", sep = ',', index = False)
     
