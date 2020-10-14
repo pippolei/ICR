@@ -1,19 +1,6 @@
 # coding=utf-8
 import os, sys, gc, datetime
-import matplotlib
-import numpy as np
-import pandas as pd
-from sklearn.preprocessing import OneHotEncoder 
-from sklearn.preprocessing import LabelEncoder
-import xgboost as xgb
-import lightgbm as lgb
-from xgboost import XGBClassifier
-from sklearn.svm import SVC   
-from sklearn.model_selection import GridSearchCV
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
 from ICR2011.lib import *
-import xlsxwriter
 
 pd.set_option('display.max_columns', None)
 pd.options.mode.chained_assignment = None 
